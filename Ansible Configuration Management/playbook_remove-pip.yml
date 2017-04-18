@@ -1,0 +1,7 @@
+---
+- name: Remove pip
+  hosts: all
+  tasks:
+   - name: Remove pip
+     yum: name=pip state=removed
+     when: ansible_os_family == "RedHat"

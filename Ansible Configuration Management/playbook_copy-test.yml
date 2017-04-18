@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: copy pem file
+      copy:
+        src: ~/.ssh/asb_controller.pem
+        dest: /tmp

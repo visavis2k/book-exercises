@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  become: yes
+  become_user: root
+  tasks:
+   - name: Stop Tomcat
+     service: name=tomcat7 state=stopped
+
+   - name: Remove Tomcat
+     yum: name=tomcat7 state=removed

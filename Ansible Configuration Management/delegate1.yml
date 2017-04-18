@@ -1,0 +1,8 @@
+---
+- name: Fetch configuration from all webservers
+  hosts: webservers
+  tasks:
+   - name: Get config
+     get_url: dest=/home/ec2-user/{{ ansible_hostname }} force=yes url=http://www.google.co.kr
+     delegate_to: localhost
+
