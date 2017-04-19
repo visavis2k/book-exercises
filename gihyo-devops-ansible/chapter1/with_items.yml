@@ -1,0 +1,10 @@
+---
+- hosts: web
+  tasks:
+    - name: 패키지 설치
+      become: true
+      yum: name={{ item }} state=present
+      with_items:
+        - httpd
+        - git
+      when: ansible_os_family == "RedHat"
