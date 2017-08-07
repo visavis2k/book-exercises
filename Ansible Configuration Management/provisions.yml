@@ -1,0 +1,20 @@
+---
+# provisions.yml
+# this brings up machines and provision them with
+# docker installs.
+
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - role: launch
+      name: "{{ name }}"
+      class: "{{ class }}"
+      iam_profile: DockerHost_EC2_Role
+
+- hosts: "tag_class_{{ class }}"
+  become: True
+  become_user: root
+  become_method: sudo
+  roles:
+    - docker
